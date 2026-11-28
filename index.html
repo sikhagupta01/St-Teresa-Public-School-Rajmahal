@@ -206,7 +206,7 @@
       overflow-x: hidden;
     }
 
-    img, video {
+    img {
       max-width: 100%;
       height: auto;
       display: block;
@@ -726,23 +726,53 @@
       display: block;
     }
 
-    /* Video & Media Slots */
-    .video-slot {
+    /* Playroom Image Holder (640 x 854 px / 3:4) */
+    .playroom-image-holder {
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 3 / 4;
       background: #f1f5f9;
-      border: 1.5px dashed #94a3b8;
+      border: 2px dashed #94a3b8;
       border-radius: var(--radius);
-      padding: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
       font-size: 0.85rem;
       color: var(--muted);
-      margin-top: 16px;
+      margin: 14px auto 0;
+      padding: 12px;
     }
 
-    .video-slot video {
+    .playroom-image-holder img {
       width: 100%;
-      border-radius: 8px;
-      background: #000000;
-      margin-bottom: 8px;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .playroom-image-holder img[src=""] {
+      display: none;
+    }
+
+    .playroom-image-holder img:not([src=""]) + .playroom-placeholder {
+      display: none;
+    }
+
+    .playroom-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      line-height: 1.4;
+    }
+
+    .playroom-placeholder strong {
+      color: var(--navy);
+      font-size: 0.92rem;
     }
 
     /* Black-Background Media & Newspaper Clipping Holders */
@@ -1039,6 +1069,10 @@
       .person-card,
       .media-card-black {
         padding: 16px;
+      }
+
+      .playroom-image-holder {
+        max-width: 260px;
       }
 
       /* Stack Quick Facts table cleanly on small phones */
@@ -1363,7 +1397,7 @@
       </div>
     </section>
 
-    <!-- 5. KIDS' PLAYROOM (DIRECT MP4 VIDEO) & ONLINE CLASSES -->
+    <!-- 5. KIDS' PLAYROOM (IMAGE HOLDER WITH SIZE) & ONLINE CLASSES -->
     <section class="section section-white" id="playroom">
       <div class="container">
         <div class="grid-2">
@@ -1372,12 +1406,13 @@
             <p>
               St. Teresa Public School features a dedicated <strong>kids' playroom equipped with many age-appropriate games</strong>. It gives younger students a safe, cheerful indoor space to play, share, make friends, and settle happily into their daily school routine.
             </p>
-            <div class="video-slot">
-              <video poster="images/playroom.webp" controls playsinline preload="metadata">
-                <source src="images/playroom.mp4" type="video/mp4" />
-                Your browser does not support MP4 video playback or <code>images/playroom.mp4</code> is missing.
-              </video>
-              <span>Playroom Video: <strong>images/playroom.mp4</strong></span>
+            <div class="playroom-image-holder">
+              <img src="images/playroom-photo.webp" alt="Kids' playroom with games and learning toys at St. Teresa Public School, Rajmahal" width="640" height="854" loading="lazy" />
+              <div class="playroom-placeholder">
+                <strong>images/playroom-photo.webp</strong>
+                <span>Image Size: <strong>640 &times; 854 px</strong> (3:4)</span>
+                <span>or 720 &times; 1280 px (9:16)</span>
+              </div>
             </div>
           </div>
 
